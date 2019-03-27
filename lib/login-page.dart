@@ -20,7 +20,7 @@ class _LogInPageState extends State<LogInPage> {
     ),
   );
 
-  final _pageForm = Expanded(
+  final _pageForm = (context) => Expanded(
     flex: 3,
     child: Container(
       padding: EdgeInsets.only(right: 20, left: 20),
@@ -32,7 +32,12 @@ class _LogInPageState extends State<LogInPage> {
             SizedBox(height: 20,),
             InputField(label: 'Password', obscureText: true,),
             SizedBox(height: 30,),
-            Button(text: 'Button')
+            Button(
+              text: 'Log In',
+              onPressed: () {
+                Navigator.pushNamed(context, '/home');
+              },
+            )
           ],
         ),
       ),
@@ -55,7 +60,7 @@ class _LogInPageState extends State<LogInPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             _pageHeader,
-            _pageForm,
+            _pageForm(context),
             _flexSpace(1),
           ],
         ),
